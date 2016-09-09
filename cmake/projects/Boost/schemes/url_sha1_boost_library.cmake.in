@@ -308,6 +308,10 @@ else()
   set(b2_cmd "./b2")
 endif()
 
+if("@ANDROID@")
+  list(APPEND build_opts target-os=android)
+endif()
+
 
 if(HUNTER_STATUS_DEBUG)
   file(READ "${boost_user_jam}" USER_JAM_CONTENT)
