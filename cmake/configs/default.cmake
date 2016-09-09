@@ -189,6 +189,7 @@ if(ANDROID)
   string(COMPARE EQUAL "${ANDROID_NATIVE_API_LEVEL}" "21" _is_api_21)
   string(COMPARE EQUAL "${ANDROID_NATIVE_API_LEVEL}" "19" _is_api_19)
   string(COMPARE EQUAL "${ANDROID_NATIVE_API_LEVEL}" "16" _is_api_16)
+  string(COMPARE EQUAL "${ANDROID_NATIVE_API_LEVEL}" "15" _is_api_15)
 
   if(_is_api_21)
     hunter_config(Android-Google-APIs VERSION 21_r01)
@@ -206,10 +207,15 @@ if(ANDROID)
     hunter_config(Android-Intel-x86-Atom-System-Image VERSION 16)
     hunter_config(Android-SDK-Platform VERSION 16_r05)
     hunter_config(Sources-for-Android-SDK VERSION 16)
+  elseif(_is_api_15)
+    hunter_config(Android-Google-APIs VERSION 15_r04)
+    hunter_config(Android-Intel-x86-Atom-System-Image VERSION 15)
+    hunter_config(Android-SDK-Platform VERSION 15_r05)
+    hunter_config(Sources-for-Android-SDK VERSION 15)
   else()
     hunter_user_error(
         "Android API (ANDROID_NATIVE_API_LEVEL)"
-        " Expected: `21`, `19`, `16`"
+        " Expected: `21`, `19`, `16`, `15`"
         " Got: `${ANDROID_NATIVE_API_LEVEL}`"
     )
   endif()
